@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Order Details
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="main">
+  <ion-card *ngFor="let cart of orders" class="cards">
+
+    <img src={{cart.photo}}/>
+    Item: {{cart.title}} > {{cart.category}}
+    $ {{cart.price}}
+     Quantity: {{cart.quant}}
+    <button  (click)="add(cart)" class="quantP"> <ion-icon name="add"></ion-icon> </button>
+    <button  (click)="minus(cart)" class="quantN"><ion-icon name="remove"></ion-icon> </button>
+
+  </ion-card>
+
+   <button  (click)="placeOrder(item)" ion-button block large icon-only color="buy">
+     Get Total
+   </button>
+
+
+   <h2> Total : {{this.Total | currency:'USD'}}</h2>
+
+</ion-content>

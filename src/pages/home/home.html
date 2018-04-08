@@ -1,0 +1,49 @@
+<ion-header color="primary">
+  <ion-navbar color="primary">
+    <ion-title color="primary">
+      Menu
+    </ion-title>
+
+    <ion-buttons end>
+       <button ion-button icon-only (click)="addItem()">
+        Add Item
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="main">
+
+  <ion-list>
+     <ion-item-sliding *ngFor="let item of items"  class="cards">
+       <ion-item class="cards">
+         <p class="text"> Item: {{item.title}} </p>
+         <p class="text"> Category: {{item.category}}  ${{item.price}} </p>
+
+       <img src={{item.photo}}/>
+       <button  (click)="viewItem(item)" ion-button block large icon-only>
+         Detail
+         <ion-icon name="information"></ion-icon>
+       </button>
+     <button  (click)="addToCart(item)" ion-button block large icon-only color="buy">
+       Add to order
+       <ion-icon name="add"></ion-icon>
+     </button>
+
+   </ion-item>
+   <ion-item-options side="right">
+     <button ion-button color="delete"(click)="deletItem(item)">Delete Item <ion-icon name="trash"></ion-icon> </button>
+     <button ion-button color="danger" (click)="edit(item)">Edit Item <ion-icon name="create"></ion-icon> </button>
+   </ion-item-options>
+ </ion-item-sliding>
+
+   </ion-list>
+
+   <ion-list>
+     <ion-item *ngFor='let Item of Items | async'>
+       {{Item.title}}
+       {{Item.price}}
+    </ion-item>
+  </ion-list>
+</ion-content>
